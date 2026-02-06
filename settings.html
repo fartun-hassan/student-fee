@@ -1,0 +1,94 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>History | Fee System</title><link rel="stylesheet" href="styles.css"/>
+</head><body>
+<header class="top">
+  <div class="wrap topRow">
+    <div class="left"><div class="dot"></div><b>Fee System</b></div>
+    <nav class="nav">
+      <a class="lnk" href="index.html">Dashboard</a>
+      <a class="lnk" href="calculator.html">Calculator</a>
+      <a class="lnk active" href="history.html">History</a>
+      <a class="lnk" href="settings.html">Settings</a>
+    </nav>
+    <div class="right"><span id="status" class="badge">Ready</span>
+      <button id="logoutBtn" class="btn sm" type="button">Logout</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap grid1">
+  <section class="card">
+    <div class="cardHead">
+      <div><h2>History</h2><p class="muted">All records (full details).</p></div>
+      <div class="hbarR">
+        <input id="q" class="in smIn" placeholder="Search..." />
+        <button id="clearHistoryBtn" class="btn danger sm" type="button">Clear</button>
+      </div>
+    </div>
+
+    <div id="histCards" class="stack"></div>
+    <div id="histMsg" class="msg"></div>
+  </section>
+
+  <!-- Edit Panel -->
+  <section id="editPanel" class="card hidden">
+    <div class="cardHead">
+      <div><h2>Edit Record</h2><p class="muted">Update then Save.</p></div>
+      <button id="closeEditBtn" class="btn danger sm" type="button">Close</button>
+    </div>
+
+    <form id="editForm" class="form" novalidate>
+      <input id="editId" type="hidden"/>
+      <div class="row">
+        <label>Student Name<input id="eName"/></label>
+        <label>Student ID<input id="eSid"/></label>
+      </div>
+      <div class="row">
+        <label>Program<select id="eProgram"></select></label>
+        <label>Level<select id="eLevel">
+          <option value="undergrad">Undergrad</option>
+          <option value="postgrad">Postgrad</option>
+        </select></label>
+      </div>
+      <div class="row">
+        <label>Credits<input id="eCredits" type="number" min="1" max="30"/></label>
+        <label>Residency<select id="eResidency">
+          <option value="local">Local</option>
+          <option value="international">International</option>
+        </select></label>
+      </div>
+      <div class="row">
+        <label>Repeating?<select id="eRepeat">
+          <option value="no">No</option><option value="yes">Yes</option>
+        </select></label>
+        <label>Repeat Credits<input id="eRepeatCredits" type="number" min="0" max="30" value="0"/></label>
+      </div>
+      <div class="row">
+        <label>Late Days<input id="eLateDays" type="number" min="0" max="365" value="0"/></label>
+        <label>Discount %<input id="eDiscount" type="number" min="0" max="100" value="0"/></label>
+      </div>
+      <div class="row">
+        <label>Other Fine<input id="eFine" type="number" min="0" step="0.01" value="0"/></label>
+        <label>Payment Plan<select id="ePlan">
+          <option value="full">Full</option><option value="installments">Installments</option>
+        </select></label>
+      </div>
+
+      <div id="editMsg" class="msg"></div>
+      <div class="actions">
+        <button class="btn primary" type="submit">Update</button>
+      </div>
+    </form>
+
+    <div class="tableWrap" style="margin-top:10px">
+      <table>
+        <thead><tr><th>Breakdown</th><th class="r">Amount</th></tr></thead>
+        <tbody id="editBreakdown"><tr><td class="muted" colspan="2">—</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script src="main.js"></script>
+</body></html>
